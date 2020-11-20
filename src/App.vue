@@ -1,14 +1,14 @@
 <template>
   <div id="app">
-    <Category></Category>
+   <router-view></router-view>
   </div>
 </template>
 <script>
-import Category from "@/views/Category";
+import Home from "@/views/Home";
 export default {
   name:"APP",
   components:{
-    Category
+    Home
   }
 }
 </script>
