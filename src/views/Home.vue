@@ -15,6 +15,10 @@
         <span class="el-icon-search search_icon"></span>
         <span>搜索商品、品牌</span>
       </div>
+    </div> 
+    <!--楼层导航-->
+    <div class="floorNav">
+      <img src="../assets/floor/1.webp" alt="">
     </div>
   </div>
 </template>
