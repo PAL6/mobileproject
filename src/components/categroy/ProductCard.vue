@@ -48,7 +48,7 @@ name: "ProductCard",
   border: 1px solid #999999;
   padding: 1px;
   width: 70%;
-  height: 60px;
+  height: auto;
 }
 .productName{
   font-size: 12px;

@@ -99,11 +99,13 @@ export default {
 }
 
 .leftMenu ul li {
-  height: 40px;
-  line-height: 40px;
+  width: 100%;
+  height: auto;
+  padding: 20px 0;
   text-align: center;
   font-size: 14px;
   color: #999999;
+  border-bottom:1px solid #999999;
   background-color: #eeeeee;
 }
 
