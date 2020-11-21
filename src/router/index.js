@@ -4,7 +4,8 @@ import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
-const Category = () => import('@/views/Category')
+const Category = () => import('../views/Category')
+const SearchResult = () => import('../views/SearchResult')
 
 const routes = [
   {
@@ -13,14 +14,14 @@ const routes = [
     component: Home
   },
   {
-    path: '/about',
-    name: 'About',
-    component: () => import('../views/About.vue')
-  },
-  {
     path: '/category',
     name: 'Category',
     component: Category
+  },
+  {
+    path: '/search',
+    name: 'SearchResult',
+    component: SearchResult
   }
 ]
 

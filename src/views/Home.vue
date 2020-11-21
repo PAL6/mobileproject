@@ -11,9 +11,9 @@
                 <span class="loginBtn">登录</span>
             </div>
         </AppBar>
-        <!--搜索-->
         <div class="content">
-            <div class="search">
+            <!--搜索-->
+            <div class="search" @click="pushToSearchPage">
                 <div class="box">
                     <span class="el-icon-search search_icon"></span>
                     <span>搜索商品、品牌</span>
@@ -21,7 +21,7 @@
             </div>
             <!--楼层导航-->
             <div class="floorNav">
-                <div v-for="(item,index) in navList" class="nav_icon">
+                <div v-for="(item,index) in navList" class="nav_icon" :key="index">
                     <img :src="item.image_src" :alt="item.name">
                 </div>
             </div>
@@ -115,6 +115,9 @@
                 }).catch(err => {
                     console.log(err)
                 })
+            },
+            pushToSearchPage(){
+                this.$router.push('/search')
             }
         },
         mounted() {

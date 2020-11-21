@@ -2,7 +2,7 @@
     <div class="product_box">
         <div class="productImg">
             <img :src="productInfo.goods_small_logo"
-                 alt="!!!">
+                 alt="暂无图片!!!">
         </div>
         <div class="info">
             <span class="infoName">{{ productInfo.goods_name }}</span>
