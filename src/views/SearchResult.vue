@@ -160,7 +160,7 @@ export default {
 
 .result {
   position: relative;
-  height: calc(100vh - 80px);
+  height: calc(100vh - 60px);
   margin-top: 60px;
 }
 
@@ -181,17 +181,20 @@ export default {
 }
 
 .product {
+  overflow: hidden;
   margin-left: 10px;
   position: absolute;
   left: 0;
   right: 0;
   top: 0px;
-  height: calc(100vh - 80px);
+  height: calc(100vh - 60px);
   display: flex;
   flex-wrap: wrap;
 }
 
 .loading {
+  position: relative;
+  z-index: 9999999;
   display: flex;
   justify-items: center;
   align-items: center;
