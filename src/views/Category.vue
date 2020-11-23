@@ -92,6 +92,7 @@ export default {
 }
 
 .leftMenu {
+  position: relative;
   height: calc(100vh - 44px);
   overflow: scroll;
   flex: 2;
@@ -112,6 +113,9 @@ export default {
 .active {
   color: black !important;
   background-color: white !important;
+  position: absolute;
+  top:0;
+  flex: 2;
 }
 
 .product {

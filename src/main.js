@@ -11,6 +11,12 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI);
 
+//无限滚动组件
+import infiniteScroll from 'vue-infinite-scroll'
+Vue.use(infiniteScroll)
+
+Vue.prototype.$bus = new Vue();
+
 Vue.config.productionTip = false
 
 new Vue({

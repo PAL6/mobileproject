@@ -1,80 +1,67 @@
 <template>
-    <div class="infinite-list-wrapper" style="overflow:auto">
-        <ul class="list"
-            v-infinite-scroll="load"
-            infinite-scroll-disabled="disabled">
-            <ProductCard v-for="item in list.length"
-                         :product-info="list[item]"
-                         class="list-item"
-                         :key="item"></ProductCard>
-        </ul>
-        <div class="loadingBox" v-if="loading">
-            <p>加载中...</p>
-        </div>
-        <div class="noMoreBox" v-if="noMore">
-            <p>没有更多了</p>
-        </div>
+  <div class="wrapper" ref="wrapper">
+    <div class="content">
+      <slot></slot>
     </div>
+  </div>
 </template>
 
 <script>
-    import ProductCard from "./home/ProductCard";
+import BScroll from 'better-scroll'
 
-    export default {
-        name: "ScrollWidget",
-        components: {
-            ProductCard
-        },
-        props: {
-            //加载方法
-            load: {
-                type: Function,
-                default() {
-                    return function () {
-
-                    }
-                }
-            },
-            list: {
-                type: Array,
-                default: []
-            },
-            total: {
-                type: Number,
-                default: 20
-            },
-            loading: {
-                type: Boolean,
-                default: false
-            },
-            pagenum: {
-                type: Number,
-                default: 0
-            }
-        },
-        computed: {
-            noMore() {
-                return this.count >= this.total
-            },
-            disabled() {
-                return this.loading || this.noMore
-            }
-        },
+export default {
+  name: "ScrollWidget",
+  data() {
+    return {
+      scroll: null
     }
+  },
+  components: {},
+  props: {
+    probeType: {
+      type: Number,
+      default: 0
+    },
+    //是否监听滚动
+    pullUpLoad: {
+      type: Boolean,
+      default: false
+    }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      setTimeout(() => {
+        this.scroll = new BScroll(this.$refs.wrapper, {
+          click: true,
+          probeType: this.probeType,
+          pullUpLoad: this.pullUpLoad,
+        });
+        //监听滚动的位置
+        this.scroll.on('scroll', (position) => {
+          this.$emit('scroll', position);
+        });
+        this.scroll.on('pullingUp', () => {
+          this.$emit('pullingUp');
+        });
+      }, 2000);
+    })
+  },
+  methods: {
+    refresh() {
+      this.scroll && this.scroll.refresh();
+    },
+    finishPullUp(){
+      this.scroll && this.scroll.finishPullUp();
+    },
+    toTop(){
+      this.scroll.scrollTo(0,0,500)
+    }
+  }
+}
 </script>
-
 <style scoped>
-    .infinite-list-wrapper ul {
-        margin-left: 10px;
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    .loadingBox, .noMoreBox {
-        padding: 10px;
-        text-align: center;
-        background-color: #bcbec2;
-        opacity: .4;
-        color: black;
-    }
+.content {
+  display: flex;
+  flex-wrap: wrap;
+}
 </style>
