@@ -39,7 +39,6 @@
                 }
                 //监听滚动的位置
                 this.scroll.on('scroll', (position) => {
-                    console.log(this.scroll)
                     this.$emit('scroll', position);
                 });
                 this.scroll.on('pullingUp', () => {
@@ -62,7 +61,7 @@
 </script>
 <style scoped>
     .content {
-        display: flex;
-        flex-wrap: wrap;
+        /*display: flex;*/
+        /*flex-wrap: wrap;*/
     }
 </style>

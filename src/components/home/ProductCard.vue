@@ -1,5 +1,5 @@
 <template>
-  <div class="product_box">
+  <div class="product_box" @click="toDetails">
     <div class="productImg">
       <img :src="productInfo.goods_small_logo"
            @load="imageLoad"
@@ -50,6 +50,9 @@ export default {
     imageLoad() {
       //利用事件总线把图片加载完成后的事件发射出去
       this.$bus.$emit('imageLoad');
+    },
+    toDetails(){
+      this.$emit('toDetails')
     }
   }
 }

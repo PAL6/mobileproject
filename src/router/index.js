@@ -6,6 +6,7 @@ Vue.use(VueRouter)
 
 const Category = () => import('../views/Category')
 const SearchResult = () => import('../views/SearchResult')
+const ProductDetails = () => import('../views/ProductDetails')
 
 const routes = [
   {
@@ -22,6 +23,11 @@ const routes = [
     path: '/search',
     name: 'SearchResult',
     component: SearchResult
+  },
+  {
+    path: '/productDetails/:id',
+    name: 'ProductDetails',
+    component: ProductDetails
   }
 ]
 

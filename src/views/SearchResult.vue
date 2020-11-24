@@ -25,7 +25,7 @@
                     :pull-up-load="true"
                     @pullingUp="loadMore"
                     @scroll="scroll">
-                <ProductCard v-for="i in resultList" :product-info="i"></ProductCard>
+                <ProductCard v-for="i in resultList" :product-info="i" @toDetails="toDetails(i.goods_id)"></ProductCard>
             </ScrollWidget>
         </div>
         <div class="loading" v-show="showLoading">
@@ -132,6 +132,9 @@
                 this.$nextTick(() => {
                     this.$refs.scroll.toTop();
                 })
+            },
+            toDetails(id) {
+                this.$router.push(`/productDetails/${id}`)
             }
         },
         mounted() {
@@ -194,7 +197,6 @@
         left: 0;
         right: 0;
         top: 0;
-        width: 100%;
         height: calc(100vh - 60px);
         display: flex;
         flex-wrap: wrap;

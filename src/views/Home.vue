@@ -43,6 +43,7 @@
             <div class="remProduct">
                 <ProductCard v-for="(item,index) in hotProduct"
                              :key="item.goods_id"
+                             @toDetails="toDetails(item.goods_id)"
                              :product-info="item"></ProductCard>
             </div>
         </div>
@@ -116,8 +117,11 @@
                     console.log(err)
                 })
             },
-            pushToSearchPage(){
+            pushToSearchPage() {
                 this.$router.push('/search')
+            },
+            toDetails(id) {
+                this.$router.push(`/productDetails/${id}`)
             }
         },
         mounted() {
