@@ -200,7 +200,8 @@
     }
 
     .ad {
-        width: 100%;
+        width: calc(100vw - 20px);
+        margin: 0 10px;
         height: auto;
     }
 

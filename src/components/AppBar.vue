@@ -29,7 +29,7 @@ export default {
 <style scoped>
 .appbar {
   background-color: rgb(255,0,54);
-  width: calc(100vw - 30px);
+  width: calc(100% - 30px);
   height: 44px;
   padding: 0 15px;
   line-height: 44px;
