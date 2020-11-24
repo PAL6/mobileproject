@@ -227,7 +227,7 @@
         padding: 5px;
         background-color: #999999;
         position: absolute;
-        bottom: 40px;
+        bottom: 80px;
         right: 20px;
     }
 </style>
