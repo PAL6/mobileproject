@@ -194,6 +194,7 @@
         left: 0;
         right: 0;
         top: 0;
+        width: 100%;
         height: calc(100vh - 60px);
         display: flex;
         flex-wrap: wrap;
