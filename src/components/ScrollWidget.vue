@@ -33,6 +33,7 @@
                 if (!this.scroll) {
                     this.scroll = new BScroll(this.$refs.wrapper, {
                         click: true,
+                        mouseWheel: true,
                         probeType: this.probeType,
                         pullUpLoad: this.pullUpLoad,
                     });
@@ -61,7 +62,7 @@
 </script>
 <style scoped>
     .content {
-        /*display: flex;*/
-        /*flex-wrap: wrap;*/
+        display: flex;
+        flex-wrap: wrap;
     }
 </style>

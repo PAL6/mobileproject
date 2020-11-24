@@ -19,20 +19,29 @@
             <!--分割线-->
             <span class="diver"></span>
         </div>
+        <!--参数-->
+        <div class="attr">
+            <div class="value"
+                 v-for="(item,index) in attr"
+                 :key="index">
+                <h4>{{item.attr_name}}</h4>
+                <span>{{item.attr_vals}}</span>
+            </div>
+        </div>
         <!--商品介绍-->
         <div class="info" ref="info"></div>
         <!-- 底部工具栏-->
         <div class="bottomTools">
-          <div class="iconBtn">
-              <van-icon name="shop" />
-              <span>店铺</span>
-          </div>
             <div class="iconBtn">
-                <van-icon name="map-marked" />
+                <van-icon name="shop"/>
+                <span>店铺</span>
+            </div>
+            <div class="iconBtn">
+                <van-icon name="map-marked"/>
                 <span>客服</span>
             </div>
             <div class="iconBtn">
-                <van-icon name="star" />
+                <van-icon name="star"/>
                 <span>收藏</span>
             </div>
             <div class="textBtn add">加入购物车</div>
@@ -51,7 +60,8 @@
             return {
                 productList: [],
                 goods_price: '',
-                goods_name: ''
+                goods_name: '',
+                attr: []
             }
         },
         methods: {
@@ -60,13 +70,12 @@
                     goods_id: this.$route.params.id
                 }).then(res => {
                     this.$refs.info.innerHTML = res.data.message.goods_introduce;
-                    let list = res.data.message.pics;
-                    list.forEach(item => {
+                    res.data.message.pics.forEach(item => {
                         this.productList.push(item.pics_sma_url);
                     })
                     this.goods_price = res.data.message.goods_price;
                     this.goods_name = res.data.message.goods_name;
-                    console.log(this.productList)
+                    this.attr = res.data.message.attrs;
                 }).catch(err => {
                     console.log(err)
                 })
@@ -79,9 +88,10 @@
 </script>
 
 <style scoped>
-    .product_details{
+    .product_details {
         margin-bottom: 44px;
     }
+
     .swipe_box {
         position: relative;
         box-shadow: 0 0 5px gray;
@@ -140,7 +150,8 @@
         width: 100%;
         background-color: rgb(240, 240, 240);
     }
-    .bottomTools{
+
+    .bottomTools {
         position: fixed;
         bottom: 0;
         left: 0;
@@ -152,7 +163,8 @@
         background-color: white;
         border-top: 1px solid gray;
     }
-    .iconBtn{
+
+    .iconBtn {
         color: gray;
         padding: 0 10px;
         display: flex;
@@ -161,17 +173,27 @@
         align-items: center;
         background-color: white;
     }
-    .textBtn{
+
+    .textBtn {
         flex: 1;
         height: 44px;
         line-height: 44px;
         text-align: center;
         color: white;
     }
-    .add{
+
+    .add {
         background-color: orange;
     }
-    .buy{
-        background-color:#ff0036;
+
+    .buy {
+        background-color: #ff0036;
+    }
+    .attr{
+        padding: 10px 10px 0 10px;
+        border:1px solid gray;
+    }
+    .value{
+        margin-bottom: 10px;
     }
 </style>
